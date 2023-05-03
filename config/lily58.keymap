@@ -9,59 +9,143 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 
+#define COLEMAK = 0;
+#define QWERTY = 1;
+#define GAMING = 2;
+#define UTIL = 3;
+#define PAGE = 4;
+
 / {
 	keymap {
 		compatible = "zmk,keymap";
 
-		default_layer {
-// ------------------------------------------------------------------------------------------------------------
-// |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   `   |
-// |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
-// |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-// | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   | SHIFT |
-//                     | ALT  | GUI  | LOWER|  SPACE |  | BSPC | RAISE | ENTER  | GUI   |
+		colemak {
+/* COLEMAK (actually colemak-dh)
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  =   |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | Tab  |   Q  |   W  |   F  |   P  |   B  |                    |   J  |   L  |   U  |   Y  |   ;  |  -   |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | BcSp |   A  |   R  |   S  |   T  |   G  |-------.    ,-------|   M  |   N  |   E  |   I  |   O  |  `   |
+ * |------+------+------+------+------+------|   ,   |    |    .  |------+------+------+------+------+------|
+ * |   [  |   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   H  |   '  |   \  |   /  |  ]   |
+ * `-----------------------------------------/ LShift/     \ UTIL \-----------------------------------------'
+ *                   | LCtl | LAlt |  Meh | /[Space]/       \[Entr]\  | PAGE | RAlt | LGUI |
+ *                   |      |      |      |/       /         \      \ |      |[Caps]|      |
+ *                   `----------------------------'           '------''--------------------'
+ */
 			bindings = <
-&kp ESC   &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                     &kp N6 &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
-&kp TAB   &kp Q  &kp W  &kp E    &kp R    &kp T                      &kp Y  &kp U    &kp I     &kp O   &kp P    &kp MINUS
-&kp LCTRL &kp A  &kp S  &kp D    &kp F    &kp G                      &kp H  &kp J    &kp K     &kp L   &kp SEMI &kp SQT
-&kp LSHFT &kp Z  &kp X  &kp C    &kp V    &kp B  &kp LBKT   &kp RBKT &kp N  &kp M    &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-                        &kp LALT &kp LGUI &mo 1  &kp SPACE  &kp BSPC &mo 2  &kp RET &kp RGUI
+  &kp ESC, &kp N1, &kp N2,   &kp N3,  &kp N4,        &kp N5,                                    &kp N6,     &kp N7,            &kp N8,    &kp N9,    &kp N0,    &kp EQUAL,  \
+  &kp TAB, &kp Q, &kp W,    &kp F,    &kp P,          &kp B,                                    &kp J,      &kp L,            &kp U,    &kp Y,    &kp SEMI, &kp MINUS, \
+  &kp BSPC, &kp A, &kp R,    &kp S,    &kp T,          &kp G,                                    &kp M,      &kp N,            &kp E,    &kp I,    &kp O,    &kp GRAVE,  \
+  &kp LBKT, &kp Z, &kp X,    &kp C,    &kp D,          &kp V,        &kp COMMA,  &kp DOT,           &kp K,      &kp H,            &kp SQT, &kp BSLH, &kp FSLH, &kp RBKT, \
+                       &kp LCRTL, &kp LALT, &lt LCTRL LSHIFT, &lt LSHIFT SPACE,        &lt UTIL ENTER, &mo PAGE, &lt RALT CAPS, &kp LGUI \
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 
-		lower_layer {
-// ------------------------------------------------------------------------------------------------------------
-// | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |      |       |       |      |       |       |
-// |  F1   |  F2 |  F3 |  F4  |  F5  |  F6  |                   |  F7  |  F8   |  F9   |  F10 |  F11  |  F12  |
-// |   `   |  !  |  @  |  #   |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   ~   |
-// |       |     |     |      |      |      |        |  |       |      |  _    |  +    |  {   |   }   |  "|"  |
-//                     |      |      |      |        |  |       |      |       |       |
+		qwerty {
+/* QWERTY
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  =   |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  -   |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | BcSp |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  `   |
+ * |------+------+------+------+------+------|   ,   |    |    .  |------+------+------+------+------+------|
+ * |   [  |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   '  |   \  |   /  |  ]   |
+ * `-----------------------------------------/ LShift/     \ UTIL \-----------------------------------------'
+ *                   | LCtl | LAlt |  Meh | /[Space]/       \[Entr]\  | PAGE | RAlt | LGUI |
+ *                   |      |      |      |/       /         \      \ |      |[Caps]|      |
+ *                   `----------------------------'           '------''--------------------'
+ */
 			bindings = <
-&bt BT_CLR &bt BT_SEL 0     &bt BT_SEL 1      &bt BT_SEL 2      &bt BT_SEL 3 &bt BT_SEL 4                 &trans    &trans    &trans          &trans    &trans    &trans
-&kp F1     &kp F2           &kp F3            &kp F4            &kp F5       &kp F6                       &kp F7    &kp F8    &kp F9          &kp F10   &kp F11   &kp F12
-&kp GRAVE  &kp EXCL         &kp AT            &kp HASH          &kp DOLLAR   &kp PRCNT                    &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR  &kp RPAR  &kp TILDE
-&trans     &ext_power EP_ON &ext_power EP_OFF &ext_power EP_TOG &trans       &trans    &trans   &trans    &trans    &kp MINUS &kp KP_PLUS     &kp LBRC  &kp RBRC  &kp PIPE
-                                              &trans            &trans       &trans    &trans   &trans    &trans    &trans    &trans
+  &kp ESC, &kp N1, &kp N2,   &kp N3,  &kp N4,        &kp N5,                                    &kp N6,     &kp N7,            &kp N8,    &kp N9,    &kp N0,    &kp EQUAL,  \
+  &kp TAB, &kp Q, &kp W,    &kp E,    &kp R,          &kp T,                                    &kp Y,       &kp U,            &kp I,    &kp O,    &kp P,    &kp MINUS, \
+  &kp BSPC, &kp A, &kp S,    &kp D,    &kp F,          &kp G,                                    &kp H,       &kp J,            &kp K,    &kp L,    &kp SEMI, &kp GRAVE,  \
+  &kp LBKT, &kp Z, &kp X,    &kp C,    &kp V,          &kp B,        &kp COMMA,  &kp DOT,           &kp N,       &kp M,            &kp SQT, &kp BSLH, &kp FSLH, &kp RBKT, \
+                       &kp LCRTL, &kp LALT, &lt LCTRL LSHIFT, &lt LSHIFT SPACE,        &lt UTIL ENTER, &mo PAGE, &lt RALT CAPS, &kp LGUI \
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 
-		raise_layer {
-// ------------------------------------------------------------------------------------------------------------
-// |       |     |     |      |      |      |                   |      |       |       |      |       |       |
-// |   `   |  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |       |
-// |   F1  |  F2 |  F3 |  F4  |  F5  |  F6  |                   |      |   <-  |   v   |  ^   |  ->   |       |
-// |   F7  |  F8 |  F9 |  F10 |  F11 |  F12 |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
-//                     |      |      |      |        |  |       |      |       |       |
+		gaming {
+/* Gaming layout
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * | ESC  |   `  |   1  |   2  |   3  |   4  |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |   6  |   7  |   Q  |   W  |   E  |   R  |                    |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | BcSp | Shift|   A  |   S  |   D  |   F  |-------.    ,-------|      |      |      |      |      |      |
+ * |------+------+------+------+------+------|   G   |    |    .  |------+------+------+------+------+------|
+ * |   5  | Ctrl |   Z  |   X  |   C  |   V  |-------|    |-------|      |      |      |      |      |      |
+ * `-----------------------------------------/       /     \ UTIL \-----------------------------------------'
+ *                   |  Tab | LAlt |  Meh | / Space /       \[Entr]\  |      |      |      |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
 			bindings = <
-&trans    &trans &trans &trans  &trans  &trans                       &trans      &trans    &trans    &trans   &trans    &trans
-&kp GRAVE &kp N1 &kp N2 &kp N3  &kp N4  &kp N5                       &kp N6      &kp N7    &kp N8    &kp N9   &kp N0    &trans
-&kp F1    &kp F2 &kp F3 &kp F4  &kp F5  &kp F6                       &trans      &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT &trans
-&kp F7    &kp F8 &kp F9 &kp F10 &kp F11 &kp F12   &trans   &trans    &kp KP_PLUS &kp MINUS &kp EQUAL &kp LBKT &kp RBKT  &kp BSLH
-                        &trans  &trans  &trans    &trans   &trans    &trans      &trans    &trans
+   &kp ESC,  &kp GRV, &kp 1,   &kp 2,    &kp 3,          &kp 4,                             _______, _______, _______, _______, _______, _______, \
+     &kp 6,    &kp 7, &kp Q,   &kp W,    &kp E,          &kp R,                             _______, _______, _______, _______, _______, _______, \
+  &kp BSPC, &kp LSFT, &kp A,   &kp S,    &kp D,          &kp F,                             _______, _______, _______, _______, _______, _______, \
+     &kp 5, &kp LCTL, &kp Z,   &kp X,    &kp C,          &kp V,   &kp G,  _______,           _______, _______, _______, _______, _______, _______, \
+                          &kp TAB, &kp LALT, &lt LCTRL LSHIFT, &kp SPACE,  &lt UTIL ENTER,  _______, _______, _______ \
+			>;
+
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+		};
+
+		util {
+/* UTIL
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * | MAIN |  F1  |  F2  |  F3  |  F4  |  F5  |                    | LOCK |      |      |      |      | PrScr|
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |      |  F6  |  F7  |  F8  |  F9  | F10  |                    |      |      |  Up  |      | |<<  | Break|
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * | Del  | F11  | F12  |      |      |      |-------.    ,-------|      | Left | Down | Rght |  ||  |WinBrk|
+ * |------+------+------+------+------+------|Ctr+Sh |    |       |------+------+------+------+------+------|
+ * | Ins  |      |      |LC+Ins|      |LS+Ins|-------|    |-------|      |      |      |      |  >>| |      |
+ * `-----------------------------------------/ LShift/     \      \-----------------------------------------'
+ *                   | LCtl | LAlt |  Meh | /[Space]/       \      \  | C-DH | QWER | GAME |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
+			bindings = <
+  DF(_COLEMAK),   &kp F1,   &kp F2,        &kp F3,   &kp F4,        &kp F5,                           DF(_UTIL), _______, _______, _______,  _______, &kp PSCR,       \
+       _______,   &kp F6,   &kp F7,        &kp F8,   &kp F9,       &kp F10,                           _______,   _______, &kp UP,   _______,  &kp MPRV, &kp PAUS,       \
+        &kp DEL,  &kp F11,  &kp F12,      _______, _______,      _______,                           _______,   &kp LEFT, &kp DOWN, &kp RGHT,  &kp MPLY, RGUI(&kp PAUS), \
+        &kp INS, _______, _______, LCTL(&kp INS), _______, LSFT(&kp INS), C_S_T(&kp LSFT),  _______, _______,   _______, _______,  _______, &kp MNXT, _______,       \
+                                       &trans, &trans,      &trans,        &trans,  _______, COLEMAK,   QWERTY,  GAMING \
+			>;
+
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+		};
+
+		page {
+/* PAGE
+ * ,-----------------------------------------.                    ,-----------------------------------------.
+ * | MAIN |      |      |      |      |      |                    | LOCK |      |      |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |                    |      |      | PgUp |      |      |      |
+ * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |-------.    ,-------|      | Home | PgDn | End  |      |      |
+ * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
+ * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+ * `-----------------------------------------/ Lshift/     \      \-----------------------------------------'
+ *                   | LCtl | LAlt |  Meh | /[Space]/       \      \  |      |      |      |
+ *                   |      |      |      |/       /         \      \ |      |      |      |
+ *                   `----------------------------'           '------''--------------------'
+ */
+
+[_PAGE] = LAYOUT( \
+			bindings = <
+  DF(_COLEMAK), _______, _______, _______, _______, _______,                    DF(_PAGE), _______, _______, _______, _______, _______, \
+       _______, _______, _______, _______, _______, _______,                    _______,    _______, &kp PG_UP, _______, _______, _______, \
+       _______, _______, _______, _______, _______, _______,                    _______,    &kp HOME, &kp PG_DN, &kp END,  _______, _______, \
+       _______, _______, _______, _______, _______, _______, _______,  _______, _______,    _______, _______, _______, _______, _______, \
+                                  &trans, &trans, &trans, &trans,  _______, _______,    _______, _______ \
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
