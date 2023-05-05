@@ -81,10 +81,10 @@
  *                   `----------------------------'           '------''--------------------'
  */
 			bindings = <
-   &kp ESC   &kp GRV  &kp 1    &kp 2     &kp 3           &kp 4                             &trans &trans &trans &trans &trans &trans  
-     &kp 6     &kp 7  &kp Q    &kp W     &kp E           &kp R                             &trans &trans &trans &trans &trans &trans  
+   &kp ESC   &kp GRV  &kp N1    &kp N2     &kp N3           &kp N4                             &trans &trans &trans &trans &trans &trans  
+     &kp N6     &kp N7  &kp Q    &kp W     &kp E           &kp R                             &trans &trans &trans &trans &trans &trans  
   &kp BSPC  &kp LSFT  &kp A    &kp S     &kp D           &kp F                             &trans &trans &trans &trans &trans &trans  
-     &kp 5  &kp LCTL  &kp Z    &kp X     &kp C           &kp V    &kp G  &trans           &trans &trans &trans &trans &trans &trans  
+     &kp N5  &kp LCTL  &kp Z    &kp X     &kp C           &kp V    &kp G  &trans           &trans &trans &trans &trans &trans &trans  
                           &kp TAB  &kp LALT  &lt LCTRL LSHIFT  &kp SPACE   &lt 3 ENTER  &trans &trans &trans 
 			>;
 
@@ -134,11 +134,11 @@
  */
 
 			bindings = <
-  &to 0 &trans &trans &trans &trans &trans                     &to 4 &trans &trans &trans &trans &trans  
-      &trans &trans &trans &trans &trans &trans                    &trans    &trans  &kp PG_UP &trans &trans &trans  
-      &trans &trans &trans &trans &trans &trans                    &trans     &kp HOME  &kp PG_DN  &kp END  &trans &trans  
-      &trans &trans &trans &trans &trans &trans &trans  &trans &trans    &trans &trans &trans &trans &trans  
-                                  &trans  &trans  &trans  &trans  &trans &trans    &trans &trans 
+      &to 0  &trans &trans &trans &trans &trans                &to 4  &trans   &trans &trans &trans &trans  
+      &trans &trans &trans &trans &trans &trans                &trans &trans   &kp PG_UP &trans &trans &trans  
+      &trans &trans &trans &trans &trans &trans                &trans &kp HOME &kp PG_DN  &kp END  &trans &trans  
+      &trans &trans &trans &trans &trans &trans &trans  &trans &trans &trans   &trans &trans &trans &trans  
+                                  &trans &trans &trans  &trans &trans &trans   &trans &trans 
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
