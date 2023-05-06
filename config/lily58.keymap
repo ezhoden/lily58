@@ -24,7 +24,7 @@
  * |------+------+------+------+------+------|   ,   |    |   .   |------+------+------+------+------+------|
  * |   [  |   Z  |   X  |   C  |   D  |   V  |-------|    |-------|   K  |   H  |   '  |   \  |   /  |  ]   |
  * `-----------------------------------------/ LShift/     \ UTIL \-----------------------------------------'
- *                   | LCtl | LAlt |  Meh | /[Space]/       \[Entr]\  | PAGE | RAlt | LGUI |
+ *                   | LCtl | LAlt | PAGE | /[Space]/       \[Bspc]\  | Entr | RAlt | LGUI |
  *                   |      |      |      |/       /         \      \ |      |[Caps]|      |
  *                   `----------------------------'           '------''--------------------'
  */
@@ -33,7 +33,7 @@
   &kp TAB  &kp Q  &kp W     &kp F     &kp P           &kp B                                     &kp J       &kp L             &kp U     &kp Y     &kp SEMI  &kp MINUS  
   &kp BSPC  &kp A  &kp R     &kp S     &kp T           &kp G                                     &kp M       &kp N             &kp E     &kp I     &kp O     &kp GRAVE   
   &kp LBKT  &kp Z  &kp X     &kp C     &kp D           &kp V         &kp COMMA   &kp DOT            &kp K       &kp H             &kp SQT  &kp BSLH  &kp FSLH  &kp RBKT  
-                       &kp LCTRL  &kp LALT  &mt LCTRL LSHIFT  &mt LSHIFT SPACE         &lt 3 ENTER  &mo 4  &mt RALT CAPS  &kp LGUI
+                       &kp LCTRL  &kp LALT  &mo 4  &mt LSHIFT SPACE         &lt 3 BSPC  &kp ENTER  &mt RALT CAPS  &kp LGUI
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -49,8 +49,8 @@
  * | BcSp |   A  |   S  |   D  |   F  |   G  |-------.    ,-------|   H  |   J  |   K  |   L  |   ;  |  `   |
  * |------+------+------+------+------+------|   ,   |    |   .   |------+------+------+------+------+------|
  * |   [  |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |   '  |   \  |   /  |  ]   |
- * `-----------------------------------------/ LShift/     \ 3 \-----------------------------------------'
- *                   | LCtl | LAlt |  Meh | /[Space]/       \[Entr]\  | PAGE | RAlt | LGUI |
+ * `-----------------------------------------/ LShift/     \ UTIL \-----------------------------------------'
+ *                   | LCtl | LAlt | PAGE | /[Space]/       \[Bspc]\  | Entr | RAlt | LGUI |
  *                   |      |      |      |/       /         \      \ |      |[Caps]|      |
  *                   `----------------------------'           '------''--------------------'
  */
@@ -59,7 +59,7 @@
   &kp TAB  &kp Q  &kp W     &kp E     &kp R           &kp T                                     &kp Y        &kp U             &kp I     &kp O     &kp P     &kp MINUS  
   &kp BSPC  &kp A  &kp S     &kp D     &kp F           &kp G                                     &kp H        &kp J             &kp K     &kp L     &kp SEMI  &kp GRAVE   
   &kp LBKT  &kp Z  &kp X     &kp C     &kp V           &kp B         &kp COMMA   &kp DOT            &kp N        &kp M             &kp SQT  &kp BSLH  &kp FSLH  &kp RBKT  
-                       &kp LCTRL  &kp LALT  &mt LCTRL LSHIFT  &mt LSHIFT SPACE         &lt 3 ENTER  &mo 4  &mt RALT CAPS  &kp LGUI
+                       &kp LCTRL  &kp LALT  &mo 4  &mt LSHIFT SPACE         &lt 3 BSPC  &kp ENTER  &mt RALT CAPS  &kp LGUI
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -134,7 +134,7 @@
  */
 
 			bindings = <
-      &to 0  &trans &trans &trans &trans &trans                &to 4  &trans   &trans &trans &trans &trans  
+      &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                &to 4  &trans   &trans &trans &trans &trans  
       &trans &trans &trans &trans &trans &trans                &trans &trans   &kp PG_UP &trans &trans &trans  
       &trans &trans &trans &trans &trans &trans                &trans &kp HOME &kp PG_DN  &kp END  &trans &trans  
       &trans &trans &trans &trans &trans &trans &trans  &trans &trans &trans   &trans &trans &trans &trans  
