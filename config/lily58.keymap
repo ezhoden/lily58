@@ -28,22 +28,22 @@
 		 * |     |  Z  |  X  |  C  |  V  |  B  |------|    |------|  N  |  M  |  ,  |  .  |  /  |     |
 		 * `----------------------------------/      /      \     \-----------------------------------'
 		 *  TAP           |     | Esc | Tab |  Spc  /        \  Bsp  | Ent |  '  |     |
-		 *  HOLD          |     | Alt | Ctl |  Sft /          \ NUM  |     | Win |     |
+		 *  HOLD          |     | Alt | Ctl |  Sft /          \ NUM  | Alt | Win |     |
 		 *                `-----------------------'            `-----------------------'
 	 */
 
             bindings = <
     &kp GRAVE  &kp N1  &kp N2    &kp N3     &kp N4  &kp N5                        &kp N6  &kp N7     &kp N8   &kp N9    &kp N0  &kp MINUS
-      &kp TAB   &kp Q   &kp W     &kp E      &kp R   &kp T                         &kp Y   &kp U      &kp I    &kp O     &kp P  &kp EQUAL
-&mt LCTRL ESC   &kp A   &kp S     &kp D      &kp F   &kp G                         &kp H   &kp J      &kp K    &kp L  &kp SEMI    &kp SQT
-    &kp LSHFT   &kp Z   &kp X     &kp C      &kp V   &kp B   &kp LBKT  &kp RBKT    &kp N   &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
-              &kp LGUI  &mt LALT ESC  &mt LCTRL TAB  &mt LSHIFT SPACE  &lt 1 BSPC  &kp RET   &mt LGUI SQT  &kp RCTRL
+     &kp TAB   &kp Q   &kp W     &kp E      &kp R   &kp T                         &kp Y   &kp U      &kp I    &kp O     &kp P  &kp EQUAL
+     &kp TAB   &kp A   &kp S     &kp D      &kp F   &kp G                         &kp H   &kp J      &kp K    &kp L  &kp SEMI    &kp SQT
+    &kp LSHFT  &kp Z   &kp X     &kp C      &kp V   &kp B   &kp LBKT  &kp RBKT    &kp N   &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+             &kp LGUI  &mt LALT ESC  &mt LCTRL TAB  &mt LSHIFT SPACE  &lt 1 BSPC  &mt LALT RET   &mt LGUI SQT  &kp RCTRL
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        raise_layer {
+        number_layer {
             // ------------------------------------------------------------------------------------------------------------
             // |    F12  	|  F1 |  F2 |  F3  |  F4  |  F5  |                   |  F6  |   F7  |   F8  |  F9  |  F10  |  F11  |
             // |   `   	|  1  |  2  |  3   |  4   |  5   |                   |  6   |   7   |   8   |  9   |   0   |   -   |
@@ -54,7 +54,7 @@
             bindings = <
       &kp F12  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                       &kp F6     &kp F7     &kp F8     &kp F9   &kp F10          &kp F11
     &kp GRAVE  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0        &kp MINUS
-&mt LCTRL ESC  &trans  &trans  &trans  &trans  &trans                     &kp LEFT   &kp DOWN     &kp UP  &kp RIGHT    &trans           &trans
+&mt LCTRL ESC  &trans  &trans  &trans  &trans  &trans                     &kp LEFT   &kp DOWN     &kp UP  &kp RIGHT    &kp ESC        &trans
    &kp LSHIFT  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp KP_PLUS  &kp MINUS  &kp EQUAL   &kp LBKT  &kp RBKT  &kp RIGHT_SHIFT
                                &trans  &trans  &trans  &trans  &trans       &trans     &trans     &trans
             >;
